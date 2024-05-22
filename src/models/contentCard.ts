@@ -25,3 +25,5 @@ export const ContentCardSchema = z.object({
     }),
   ),
 })
+
+export type ContentCard = z.infer<typeof ContentCardSchema>
