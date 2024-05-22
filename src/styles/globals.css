@@ -60,3 +60,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+pre,
+code {
+  tab-width: 2;
+}
