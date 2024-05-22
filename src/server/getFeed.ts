@@ -13,5 +13,15 @@ const feedOptions: RequestInit = {
 export const getFeed = async () => {
   const response = await fetch(`${env.FEED_URL}/content`, feedOptions)
   const data = await response.json()
-  return z.object({ contentCards: z.array(ContentCardSchema) }).parse(data).contentCards
+  return z
+    .object({ contentCards: z.array(ContentCardSchema) })
+    .parse(data)
+    .contentCards.map(
+      !env.FEED_IS_DYNAMIC
+        ? (card, i) => ({
+            ...card,
+            imageUri: `${card.imageUri}?random=${i}`,
+          })
+        : (i) => i,
+    )
 }
