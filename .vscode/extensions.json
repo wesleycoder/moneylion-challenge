@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "heybourn.headwind",
+    "bradlc.vscode-tailwindcss",
+    "stivo.tailwind-fold",
+    "biomejs.biome",
+    "socheatsok78-lab.dotenv-vscode-stripped",
+    "yoavbls.pretty-ts-errors",
+    "mrmlnc.vscode-stylefmt",
+  ],
+}
