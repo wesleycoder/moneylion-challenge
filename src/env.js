@@ -10,7 +10,8 @@ export const env = createEnv({
     NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
     DATABASE_URL: z.string().url(),
     FEED_URL: z.string().url(),
-    FEED_IS_DYNAMIC: z.boolean().default(false),
+    FEED_IS_DYNAMIC: z.coerce.boolean().default(false),
+    APP_URLS: z.string().default(''),
   },
 
   /**
@@ -31,6 +32,7 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     FEED_URL: process.env.FEED_URL,
     FEED_IS_DYNAMIC: process.env.FEED_IS_DYNAMIC,
+    APP_URLS: process.env.APP_URLS,
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
   emptyStringAsUndefined: true,
