@@ -19,13 +19,13 @@
   },
   "json.schemas": [
     {
-      "fileMatch": [
-        "**/*.jsonc",
-        "**/biome.jsonc"
-      ],
+      "fileMatch": ["**/*.jsonc", "**/biome.jsonc"],
       "schema": {
         "allowTrailingCommas": true,
       },
     },
   ],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+  },
 }
