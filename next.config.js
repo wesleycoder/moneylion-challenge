@@ -13,6 +13,15 @@ const config = {
       allowedOrigins: ['http://localhost:3000', ...env.APP_URLS],
     },
   },
+  images: {
+    domains: ['picsum.photos'],
+    /**
+     * Opting out of optimization to avoid images from picsum changing when resizing the window
+     * In a real production scenario we should remove this option and let Next.js optimize
+     * the images or use a custom loader or third-party service
+     */
+    unoptimized: true,
+  },
 }
 
 export default config
