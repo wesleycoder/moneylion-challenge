@@ -4,12 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "dotenvx run --convention=nextjs -- next build",
+    "build": "dotenvx run -q --convention=nextjs -- next build",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
-    "dev": "dotenvx run --convention=nextjs -- next dev",
+    "dev": "dotenvx run -q --convention=nextjs -- next dev",
     "lint": "next lint",
-    "start": "dotenvx run --convention=nextjs -- next start"
+    "start": "dotenvx run -q --convention=nextjs -- next start"
   },
   "dependencies": {
     "@libsql/client": "^0.6.0",
