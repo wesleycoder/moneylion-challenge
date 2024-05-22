@@ -10,6 +10,13 @@ const feedOptions: RequestInit = {
   },
 }
 
+/**
+ * Random offset to get different images for each card when the feed is static
+ * this way the images will be the same between requests and different for each card
+ * this is just for presentation purposes and should not be used in a real production scenario
+ */
+const picsumOffset = Math.floor(Math.random() * 100)
+
 export const getFeed = async () => {
   const response = await fetch(`${env.FEED_URL}/content`, feedOptions)
   const data = await response.json()
@@ -20,7 +27,10 @@ export const getFeed = async () => {
       !env.FEED_IS_DYNAMIC
         ? (card, i) => ({
             ...card,
-            imageUri: `${card.imageUri}?random=${i}`,
+            imageUri: `${card.imageUri.replace(
+              'picsum.photos',
+              `picsum.photos/id/${i + picsumOffset}`,
+            )}?random=${i}`,
           })
         : (i) => i,
     )
