@@ -28,6 +28,7 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit",
   },
+  "editor.rulers": [100],
   "headwind.classRegex": {
     "html": "\\bclass\\s*=\\s*[\\\"\\']([_a-zA-Z0-9\\s\\-\\:\\/]+)[\\\"\\']",
     "css": "\\B@apply\\s+([_a-zA-Z0-9\\s\\-\\:\\/]+);",

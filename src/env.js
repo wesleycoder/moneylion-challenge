@@ -11,7 +11,9 @@ export const env = createEnv({
     DATABASE_URL: z.string().url(),
     FEED_URL: z.string().url(),
     FEED_IS_DYNAMIC: z.preprocess((val) => val === 'true', z.boolean()).default(false),
-    APP_URLS: z.preprocess((s) => (typeof s === 'string' ? s.split(',') : []), z.array(z.string())).default([]),
+    APP_URLS: z
+      .preprocess((s) => (typeof s === 'string' ? s.split(',') : []), z.array(z.string()))
+      .default([]),
   },
 
   /**
