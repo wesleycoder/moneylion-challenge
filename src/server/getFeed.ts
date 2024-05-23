@@ -15,7 +15,7 @@ const feedOptions: RequestInit = {
  * this way the images will be the same between requests and different for each card
  * this is just for presentation purposes and should not be used in a real production scenario
  */
-const picsumOffset = Math.floor(Math.random() * 100)
+const picsumOffset = Math.floor(Math.random() * 50)
 
 export const getFeed = async () => {
   const response = await fetch(`${env.FEED_URL}/content`, feedOptions)
@@ -25,13 +25,16 @@ export const getFeed = async () => {
     .parse(data)
     .contentCards.map(
       !env.FEED_IS_DYNAMIC
-        ? (card, i) => ({
-            ...card,
-            imageUri: `${card.imageUri.replace(
-              'picsum.photos',
-              `picsum.photos/id/${i + picsumOffset}`,
-            )}?random=${i}`,
-          })
+        ? (card, i) => {
+            return {
+              ...card,
+              imageUri: `${card.imageUri.replace(
+                'picsum.photos',
+                `picsum.photos/id/${i + picsumOffset}`,
+              )}`,
+            }
+          }
         : (i) => i,
     )
+    .sort((a, b) => b.metadata.priority - a.metadata.priority)
 }
