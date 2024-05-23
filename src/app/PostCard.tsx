@@ -17,7 +17,7 @@ type PostCardProps = {
 
 export const PostCard = ({ post, priority }: PostCardProps) => {
   return (
-    <Card key={post.id} className="overflow-hidden">
+    <Card key={post.id} className="overflow-hidden rounded-none sm:rounded-md">
       <CardHeader className="relative h-96">
         <Image
           src={post.imageUri}

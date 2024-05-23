@@ -6,7 +6,7 @@ import { cn } from '~/lib/utils'
 import '~/styles/globals.css'
 
 export const metadata = {
-  title: 'Moneylion Challenge',
+  title: 'MoneyLion Challenge',
   description: 'Feed sample for Moneylion Challenge',
   icons: [{ rel: 'icon', url: '/favicon.ico' }],
 }
