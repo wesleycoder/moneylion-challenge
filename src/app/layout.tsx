@@ -3,7 +3,7 @@ import { CookiesProvider } from 'next-client-cookies/server'
 import { cookies, headers } from 'next/headers'
 import type { PropsWithChildren } from 'react'
 import { cn } from '~/lib/utils'
-import '~/styles/globals.css'
+import './theme.css'
 
 export const metadata = {
   title: 'MoneyLion Challenge',
@@ -18,6 +18,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <CookiesProvider>
       <html lang="en" className={`${GeistSans.variable}`}>
+        <head>
+          <link rel="preconnect" href="https://api.iconify.design" />
+        </head>
         <body className={cn(chosenTheme || prefersColorScheme)}>{children}</body>
       </html>
     </CookiesProvider>
