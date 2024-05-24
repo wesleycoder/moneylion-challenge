@@ -3,7 +3,7 @@ import { PostCard } from './PostCard'
 import { ToggleDarkMode } from './ToggleDarkMode'
 import { getFeed } from './feed'
 
-export const setTheme = async (theme?: string) => {
+const setTheme = async (theme?: string) => {
   'use server'
   if (theme && theme !== 'system') {
     cookies().set('theme', theme)
