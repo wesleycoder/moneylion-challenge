@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers'
-import { getFeed } from '~/server/getFeed'
 import { PostCard } from './PostCard'
 import { ToggleDarkMode } from './ToggleDarkMode'
+import { getFeed } from './feed'
 
 export const setTheme = async (theme?: string) => {
   'use server'
