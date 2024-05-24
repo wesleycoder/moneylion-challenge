@@ -55,7 +55,12 @@ export const ToggleDarkMode = ({ className, setTheme }: ToggleDarkModeProps) => 
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger className={cn('py-2 px-4', className)}>
+        <DropdownMenuTrigger
+          aria-hidden="false"
+          aria-label="Select dark mode"
+          className={cn('py-2 px-4', className)}
+          role="combobox"
+        >
           <ModeIcon theme={cookies.get('theme')} />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
@@ -65,14 +70,15 @@ export const ToggleDarkMode = ({ className, setTheme }: ToggleDarkModeProps) => 
               await setTheme(value)
               selectTheme(value)
             }}
+            role="listbox"
           >
-            <DropdownMenuRadioItem value="system" className="gap-2">
+            <DropdownMenuRadioItem value="system" className="gap-2" role="option">
               <ModeIcon theme="system" /> System
             </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="light" className="gap-2">
+            <DropdownMenuRadioItem value="light" className="gap-2" role="option">
               <ModeIcon theme="light" /> Light
             </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="dark" className="gap-2">
+            <DropdownMenuRadioItem value="dark" className="gap-2" role="option">
               <ModeIcon theme="dark" /> Dark
             </DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
