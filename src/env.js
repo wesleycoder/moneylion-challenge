@@ -8,7 +8,7 @@ export const env = createEnv({
    */
   server: {
     NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
-    DATABASE_URL: z.string().url(),
+    DATABASE_URL: z.string().url().optional(),
     FEED_URL: z.string().url(),
     FEED_IS_DYNAMIC: z.preprocess((val) => val === 'true', z.boolean()).default(false),
     APP_URLS: z
@@ -34,7 +34,12 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     FEED_URL: process.env.FEED_URL,
     FEED_IS_DYNAMIC: process.env.FEED_IS_DYNAMIC,
-    APP_URLS: process.env.APP_URLS,
+    APP_URLS: [
+      process.env.APP_URLS,
+      process.env.VERCEL_URL,
+      process.env.VERCEL_BRANCH_URL,
+      process.env.VERCEL_PROJECT_PRODUCTION_URL,
+    ].join(','),
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
   emptyStringAsUndefined: true,
