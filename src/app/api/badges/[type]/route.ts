@@ -11,33 +11,57 @@ const resultSchema = z.object({
       performance: z.object({
         score: z.number(),
       }),
+      accessibility: z.object({
+        score: z.number(),
+      }),
+      'best-practices': z.object({
+        score: z.number(),
+      }),
+      seo: z.object({
+        score: z.number(),
+      }),
+      pwa: z.object({
+        score: z.number(),
+      }),
     }),
   }),
 })
 
 const paramsSchema = z.object({
-  type: z.enum(['performance', 'accessibility', 'best-practices', 'seo', 'pwa']),
+  type: z.enum(['performance', 'accessibility', 'best-practices', 'seo']),
+  strategy: z.enum(['desktop', 'mobile']),
 })
 type Params = z.infer<typeof paramsSchema>
 
-export const GET = async (_req: Request, { params }: { params: Params }) => {
-  const parsedParams = paramsSchema.safeParse(params)
+const categoryMap = {
+  performance: 'PERFORMANCE',
+  accessibility: 'ACCESSIBILITY',
+  'best-practices': 'BEST_PRACTICES',
+  seo: 'SEO',
+}
+
+export const GET = async (req: Request, { params }: { params: Params }) => {
+  const searchParams = new URLSearchParams(req.url.split('?')[1])
+  const parsedParams = paramsSchema.safeParse({
+    ...params,
+    strategy: searchParams.get('strategy') || 'desktop',
+  })
   if (!parsedParams.success) {
     return new Response('Invalid type', { status: 400 })
   }
   const {
-    data: { type },
+    data: { type, strategy },
   } = parsedParams
 
   const url = new URL(PAGESPEED_URL)
   url.searchParams.set('url', env.APP_URL)
-  url.searchParams.set('category', type.toUpperCase())
-  url.searchParams.set('strategy', 'DESKTOP')
+  url.searchParams.set('category', categoryMap[type])
+  url.searchParams.set('strategy', strategy.toUpperCase())
 
   const response = await fetch(url, { next: { revalidate: env.BADGE_CACHE_TTL_MINUTES * 60 } })
   const data = await response.json()
   const result = resultSchema.parse(data)
-  const score = Math.round(result.lighthouseResult.categories.performance.score * 100)
+  const score = Math.round(result.lighthouseResult.categories[type].score * 100)
   return new Response(
     JSON.stringify({
       subject: score,
