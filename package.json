@@ -7,7 +7,7 @@
     "build": "dotenvx run -q --convention=nextjs -- next build",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
-    "dev": "dotenvx run -q --convention=nextjs -- next dev",
+    "dev": "dotenvx run -q --convention=nextjs -- next dev --turbo",
     "lint": "next lint",
     "start": "dotenvx run -q --convention=nextjs -- next start"
   },
@@ -36,7 +36,7 @@
     "@biomejs/biome": "^1.7.3",
     "@dotenvx/dotenvx": "^0.44.0",
     "@types/node": "^20.12.12",
-    "@types/react": "^18.3.2",
+    "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "drizzle-kit": "^0.21.4",
     "postcss": "^8.4.38",
