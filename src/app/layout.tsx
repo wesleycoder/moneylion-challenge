@@ -21,7 +21,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <head>
           <link rel="preconnect" href="https://api.iconify.design" />
         </head>
-        <body className={cn(chosenTheme || prefersColorScheme)}>{children}</body>
+        <body className={cn(chosenTheme || prefersColorScheme, 'bg-gradient')}>{children}</body>
       </html>
     </CookiesProvider>
   )
