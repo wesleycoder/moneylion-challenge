@@ -11,9 +11,11 @@ export const env = createEnv({
     DATABASE_URL: z.string().url().optional(),
     FEED_URL: z.string().url(),
     FEED_IS_DYNAMIC: z.preprocess((val) => val === 'true', z.boolean()).default(false),
+    APP_URL: z.string().url(),
     APP_URLS: z
       .preprocess((s) => (typeof s === 'string' ? s.split(',') : []), z.array(z.string()))
       .default([]),
+    BADGE_CACHE_TTL_MINUTES: z.coerce.number().default(15),
   },
 
   /**
@@ -34,12 +36,18 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     FEED_URL: process.env.FEED_URL,
     FEED_IS_DYNAMIC: process.env.FEED_IS_DYNAMIC,
+    APP_URL:
+      process.env.APP_URL ||
+      process.env.VERCEL_URL ||
+      process.env.VERCEL_BRANCH_URL ||
+      process.env.VERCEL_PROJECT_PRODUCTION_URL,
     APP_URLS: [
       process.env.APP_URLS,
       process.env.VERCEL_URL,
       process.env.VERCEL_BRANCH_URL,
       process.env.VERCEL_PROJECT_PRODUCTION_URL,
     ].join(','),
+    BADGE_CACHE_TTL_MINUTES: process.env.BADGE_CACHE_TTL_MINUTES,
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
   emptyStringAsUndefined: true,
