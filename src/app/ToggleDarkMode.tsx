@@ -55,7 +55,7 @@ export const ToggleDarkMode = ({ className, setTheme }: ToggleDarkModeProps) => 
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger className={cn('py-2 px-4', className)}>
+        <DropdownMenuTrigger aria-label="Select dark mode" className={cn('py-2 px-4', className)}>
           <ModeIcon theme={cookies.get('theme')} />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
