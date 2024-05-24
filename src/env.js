@@ -1,6 +1,12 @@
 import { createEnv } from '@t3-oss/env-nextjs'
 import { z } from 'zod'
 
+const CURRENT_DOMAIN =
+  process.env.APP_DOMAIN ||
+  process.env.VERCEL_URL ||
+  process.env.VERCEL_BRANCH_URL ||
+  process.env.VERCEL_PROJECT_PRODUCTION_URL
+
 export const env = createEnv({
   /**
    * Specify your server-side environment variables schema here. This way you can ensure the app
@@ -36,11 +42,7 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     FEED_URL: process.env.FEED_URL,
     FEED_IS_DYNAMIC: process.env.FEED_IS_DYNAMIC,
-    APP_URL:
-      process.env.APP_URL ||
-      process.env.VERCEL_URL ||
-      process.env.VERCEL_BRANCH_URL ||
-      process.env.VERCEL_PROJECT_PRODUCTION_URL,
+    APP_URL: `https://${CURRENT_DOMAIN}`,
     APP_URLS: [
       process.env.APP_URLS,
       process.env.VERCEL_URL,
