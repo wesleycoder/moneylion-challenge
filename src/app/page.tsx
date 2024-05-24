@@ -2,7 +2,7 @@ import { cookies } from 'next/headers'
 import type { HTMLProps } from 'react'
 import { PostCard } from './PostCard'
 import { ToggleDarkMode } from './ToggleDarkMode'
-import { getFeed } from './feed'
+import { getFeed } from './api/feed'
 
 const setTheme = async (theme?: string) => {
   'use server'
