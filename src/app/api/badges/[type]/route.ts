@@ -33,13 +33,6 @@ const paramsSchema = z.object({
 })
 type Params = z.infer<typeof paramsSchema>
 
-const categoryMap = {
-  performance: 'PERFORMANCE',
-  accessibility: 'ACCESSIBILITY',
-  'best-practices': 'BEST_PRACTICES',
-  seo: 'SEO',
-}
-
 export const GET = async (req: Request, { params }: { params: Params }) => {
   const searchParams = new URLSearchParams(req.url.split('?')[1])
   const parsedParams = paramsSchema.safeParse({
@@ -55,7 +48,6 @@ export const GET = async (req: Request, { params }: { params: Params }) => {
 
   const url = new URL(PAGESPEED_URL)
   url.searchParams.set('url', env.APP_URL)
-  url.searchParams.set('category', categoryMap[type])
   url.searchParams.set('strategy', strategy.toUpperCase())
 
   const response = await fetch(url, { next: { revalidate: env.BADGE_CACHE_TTL_MINUTES * 60 } })
