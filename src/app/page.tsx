@@ -41,6 +41,7 @@ export default async function HomePage() {
   return (
     <>
       <header
+        aria-hidden="false"
         className={cn(
           'sticky top-0 flex items-center justify-between z-10 px-6 py-4',
           'border-b border-border/40 bg-background/95 backdrop-blur-lg',
