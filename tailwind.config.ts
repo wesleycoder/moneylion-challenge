@@ -76,10 +76,10 @@ const config = {
           },
         },
         'zoom-in': {
-          '0%': { transform: 'scale(.8)', opacity: '0' },
-          '50%': { transform: 'scale(1)', opacity: '1' },
-          '85%': { transform: 'scale(1)', opacity: '1' },
-          '100%': { transform: 'scale(.9)', opacity: '0' },
+          '0%': { transform: 'scale(.95)', opacity: '.1', filter: 'blur(.3rem)' },
+          '50%': { transform: 'scale(1)', opacity: '1', filter: 'blur(0rem)' },
+          '85%': { transform: 'scale(1)', opacity: '1', filter: 'blur(0rem)' },
+          '100%': { transform: 'scale(.95)', opacity: '.1', filter: 'blur(.3rem)' },
         },
       },
       animation: {

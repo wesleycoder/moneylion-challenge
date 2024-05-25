@@ -63,7 +63,7 @@ export default async function HomePage() {
       </header>
       <main
         aria-hidden="false"
-        className={cn('container grid grid-cols-1 justify-center gap-12 pb-[30dvh] px-0 sm:px-4')}
+        className={cn('container grid grid-cols-1 justify-center gap-6 pb-[30dvh] px-0 sm:px-4')}
       >
         <h2 className="text-5xl font-extrabold tracking-tight py-8 text-center sm:text-7xl md:text-8xl lg:text-9xl text-primary [scroll-snap-align:start]">
           Enjoy your feed
