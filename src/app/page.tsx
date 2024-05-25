@@ -65,7 +65,15 @@ export default async function HomePage() {
         </h2>
         <div className="grid grid-cols-1 gap-4">
           {feed.map((post, i) => (
-            <PostCard key={post.id} post={post} priority={i <= 4} />
+            <PostCard
+              key={post.id}
+              post={post}
+              priority={i <= 4}
+              className={cn([
+                'animate-zoom-in no-scroll-timeline:animate-none',
+                '[animation-range:0%_100%] [animation-timeline:view()]',
+              ])}
+            />
           ))}
         </div>
       </main>

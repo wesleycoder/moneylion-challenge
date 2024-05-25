@@ -75,11 +75,18 @@ const config = {
             height: '2.5rem',
           },
         },
+        'zoom-in': {
+          '0%': { transform: 'scale(.95)' },
+          '33%': { transform: 'scale(1)' },
+          '66%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(.95)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'header-shrink': 'header-shrink 0.2s linear forwards',
+        'zoom-in': 'zoom-in 0.2s ease-out',
       },
     },
     supports: {
