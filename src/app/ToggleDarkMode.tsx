@@ -1,5 +1,5 @@
 'use client'
-import { Icon } from '@iconify-icon/react'
+import { Icon, type IconifyIconProperties } from '@iconify-icon/react'
 import type { DropdownMenuProps } from '@radix-ui/react-dropdown-menu'
 import { useCookies } from 'next-client-cookies'
 import { useEffect } from 'react'
@@ -24,11 +24,12 @@ const selectTheme = async (theme?: string | null) => {
   }
 }
 
-const ModeIcon = ({ theme }: { theme?: string | null }) =>
+type ModeIconProps = Omit<IconifyIconProperties, 'icon' | 'inline'> & { theme?: string | null }
+const ModeIcon = ({ theme, ...props }: ModeIconProps) =>
   ({
-    system: <Icon icon="line-md:computer" />,
-    light: <Icon icon="line-md:sunny-outline-loop" />,
-    dark: <Icon icon="line-md:moon-loop" />,
+    system: <Icon {...props} inline icon="line-md:computer" />,
+    light: <Icon {...props} inline icon="line-md:sunny-outline-loop" />,
+    dark: <Icon {...props} inline icon="line-md:moon-loop" />,
   })[theme || 'system']
 
 type ToggleDarkModeProps = DropdownMenuProps & {
@@ -87,3 +88,5 @@ export const ToggleDarkMode = ({ className, setTheme }: ToggleDarkModeProps) => 
     </>
   )
 }
+
+export default ToggleDarkMode

@@ -1,9 +1,11 @@
+import dynamic from 'next/dynamic'
 import { cookies } from 'next/headers'
 import type { HTMLProps } from 'react'
 import { cn } from '~/lib/utils'
 import { PostCard } from './PostCard'
-import { ToggleDarkMode } from './ToggleDarkMode'
 import { getFeed } from './api/feed'
+
+const ToggleDarkMode = dynamic(() => import('./ToggleDarkMode'))
 
 const setTheme = async (theme?: string) => {
   'use server'
