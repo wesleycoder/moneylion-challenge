@@ -19,6 +19,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <CookiesProvider>
       <html lang="en" className={`${GeistSans.variable}`} suppressHydrationWarning>
         <head>
+          <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
           <link rel="preconnect" href="https://api.iconify.design" />
         </head>
         <body className={cn(chosenTheme || prefersColorScheme, 'bg-gradient')}>{children}</body>
