@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import type { HTMLProps } from 'react'
 import { Button } from '~/components/ui/button'
 import {
   Card,
@@ -8,16 +9,17 @@ import {
   CardHeader,
   CardTitle,
 } from '~/components/ui/card'
+import { cn } from '~/lib/utils'
 import type { ContentCard } from '~/models/contentCard'
 
-type PostCardProps = {
+type PostCardProps = HTMLProps<HTMLDivElement> & {
   post: ContentCard
   priority?: boolean
 }
 
-export const PostCard = ({ post, priority }: PostCardProps) => {
+export const PostCard = ({ post, priority, className, ...props }: PostCardProps) => {
   return (
-    <Card key={post.id} className="overflow-hidden rounded-none sm:rounded-md">
+    <Card className={cn('overflow-hidden rounded-none sm:rounded-md', className)} {...props}>
       <CardHeader className="relative h-96">
         <Image
           src={post.imageUri}

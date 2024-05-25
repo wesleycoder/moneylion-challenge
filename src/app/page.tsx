@@ -1,5 +1,6 @@
 import { cookies } from 'next/headers'
 import type { HTMLProps } from 'react'
+import { cn } from '~/lib/utils'
 import { PostCard } from './PostCard'
 import { ToggleDarkMode } from './ToggleDarkMode'
 import { getFeed } from './api/feed'
@@ -39,7 +40,16 @@ export default async function HomePage() {
   const feed = await getFeed()
   return (
     <>
-      <header className="flex items-center justify-between px-6 py-4 border-b dark:border-gray-300">
+      <header
+        className={cn(
+          'sticky top-0 flex items-center justify-between z-10 px-6 py-4',
+          'border-b border-border/40 bg-background/95 backdrop-blur-lg',
+          'supports-[backdrop-filter]:bg-background/60',
+          'dark:border-border/40 dark:supports-[backdrop-filter]:bg-background/80',
+          'animate-header-shrink no-scroll-timeline:animate-none',
+          '[animation-range:0px_74px] [animation-timeline:scroll()]',
+        )}
+      >
         <div className="flex items-center gap-2">
           <FeatherIcon className="w-6 h-6" title="feather icon" />
           <h1 className="text-xl font-semibold">Feed Challenge</h1>

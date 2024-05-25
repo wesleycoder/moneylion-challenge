@@ -67,11 +67,24 @@ const config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        'header-shrink': {
+          from: {
+            height: '4.55rem',
+          },
+          to: {
+            height: '2.5rem',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'header-shrink': 'header-shrink 0.2s linear forwards',
       },
+    },
+    supports: {
+      'scroll-timeline': '(animation-timeline: scroll())',
+      'no-scroll-timeline': 'not (animation-timeline: scroll())',
     },
   },
   plugins: [require('tailwindcss-animate')],
