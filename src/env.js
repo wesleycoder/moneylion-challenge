@@ -17,6 +17,7 @@ export const env = createEnv({
     DATABASE_URL: z.string().url().optional(),
     FEED_URL: z.string().url(),
     FEED_IS_DYNAMIC: z.preprocess((val) => val === 'true', z.boolean()).default(false),
+    GOOGLE_API_KEY: z.string(),
     APP_URL: z.string().url(),
     APP_URLS: z
       .preprocess((s) => (typeof s === 'string' ? s.split(',') : []), z.array(z.string()))
@@ -42,6 +43,7 @@ export const env = createEnv({
     NODE_ENV: process.env.NODE_ENV,
     FEED_URL: process.env.FEED_URL,
     FEED_IS_DYNAMIC: process.env.FEED_IS_DYNAMIC,
+    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
     APP_URL: `https://${CURRENT_DOMAIN}`,
     APP_URLS: [
       process.env.APP_URLS,
