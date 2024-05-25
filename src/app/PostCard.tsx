@@ -61,11 +61,13 @@ export const PostCard = ({ post, priority, className, ...props }: PostCardProps)
             </button>
           </DialogTrigger>
           <DialogContent>
-            <DialogHeader>
-              <DialogDescription>
-                <Image src={post.imageUri} alt={post.textData.title} height={600} width={1400} />
-              </DialogDescription>
-            </DialogHeader>
+            <Image
+              src={post.imageUri}
+              alt={post.textData.title}
+              height={600}
+              width={1400}
+              className="max-h-[90dvh]"
+            />
           </DialogContent>
         </Dialog>
       </CardHeader>
