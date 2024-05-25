@@ -3,7 +3,7 @@ import { env } from '~/env'
 
 export const maxDuration = 60
 
-const PAGESPEED_URL = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed'
+const PAGESPEED_URL = 'https://pagespeedonline.googleapis.com/pagespeedonline/v5/runPagespeed'
 
 const resultSchema = z.object({
   lighthouseResult: z.object({
