@@ -19,13 +19,13 @@ type PostCardProps = HTMLProps<HTMLDivElement> & {
 
 export const PostCard = ({ post, priority, className, ...props }: PostCardProps) => {
   return (
-    <Card className={cn('overflow-hidden rounded-none sm:rounded-md', className)} {...props}>
+    <Card className={cn('rounded-none sm:rounded-md', className)} {...props}>
       <CardHeader className="relative h-96">
         <Image
           src={post.imageUri}
           alt={post.textData.title}
           fill
-          className="object-cover w-full h-full"
+          className="object-cover w-full h-full sm:rounded-t-md"
           priority={priority}
         />
       </CardHeader>

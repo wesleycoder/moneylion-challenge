@@ -46,39 +46,39 @@ export default async function HomePage() {
         aria-hidden="false"
         className={cn(
           'sticky top-0 flex items-center justify-between z-10 px-6 py-4',
-          'border-b border-border/40 bg-background/95 backdrop-blur-lg',
-          'supports-[backdrop-filter]:bg-background/60',
+          'border-b border-border/40 bg-background/95 backdrop-blur-2xl',
+          'supports-[backdrop-filter]:bg-background/50',
           'dark:border-border/40 dark:supports-[backdrop-filter]:bg-background/80',
           'animate-header-shrink no-scroll-timeline:animate-none',
-          '[animation-range:0px_74px] [animation-timeline:scroll()]',
+          '[animation-range:0rem_4rem] [animation-timeline:scroll()]',
         )}
       >
-        <div className="flex items-center gap-2">
-          <FeatherIcon className="w-6 h-6" title="feather icon" />
-          <h1 className="text-xl font-semibold">Feed Challenge</h1>
+        <div className="container flex justify-between p-0">
+          <div className="flex items-center gap-2 px-4">
+            <FeatherIcon className="w-6 h-6" title="feather icon" />
+            <h1 className="text-xl font-semibold">Feed Challenge</h1>
+          </div>
+          <ToggleDarkMode setTheme={setTheme} />
         </div>
-        <ToggleDarkMode setTheme={setTheme} />
       </header>
       <main
         aria-hidden="false"
-        className="container flex flex-col justify-center min-h-screen gap-12 px-0 py-16 sm:px-4"
+        className={cn('container grid grid-cols-1 justify-center gap-12 pb-[30dvh] px-0 sm:px-4')}
       >
-        <h2 className="text-6xl font-extrabold tracking-tight text-center sm:text-7xl md:text-8xl lg:text-9xl text-primary">
+        <h2 className="text-5xl font-extrabold tracking-tight py-8 text-center sm:text-7xl md:text-8xl lg:text-9xl text-primary [scroll-snap-align:start]">
           Enjoy your feed
         </h2>
-        <div className="grid grid-cols-1 gap-4">
-          {feed.map((post, i) => (
-            <PostCard
-              key={post.id}
-              post={post}
-              priority={i <= 4}
-              className={cn([
-                'animate-zoom-in no-scroll-timeline:animate-none',
-                '[animation-range:0%_100%] [animation-timeline:view()]',
-              ])}
-            />
-          ))}
-        </div>
+        {feed.map((post, i) => (
+          <PostCard
+            key={post.id}
+            post={post}
+            priority={i <= 4}
+            className={cn([
+              'animate-zoom-in no-scroll-timeline:animate-none',
+              '[animation-range:0%_100%] [animation-timeline:view()]',
+            ])}
+          />
+        ))}
       </main>
     </>
   )
