@@ -46,7 +46,7 @@ export const PostCard = ({ post, priority, className, ...props }: PostCardProps)
       <CardHeader className="relative p-0 h-96">
         <Dialog aria-label={post.textData.title}>
           <DialogTrigger asChild>
-            <button type="button" className="relative w-full h-full">
+            <button type="button" className="relative w-full h-full" aria-label="Open image view">
               <Image
                 src={post.imageUri}
                 alt={post.textData.title}
