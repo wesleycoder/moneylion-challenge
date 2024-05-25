@@ -9,6 +9,14 @@ import {
   CardHeader,
   CardTitle,
 } from '~/components/ui/card'
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '~/components/ui/sheet'
 import { cn } from '~/lib/utils'
 import type { ContentCard } from '~/models/contentCard'
 
@@ -37,7 +45,30 @@ export const PostCard = ({ post, priority, className, ...props }: PostCardProps)
         <p className="break-words line-clamp-3 overflow-ellipsis">{post.textData.body}</p>
       </CardContent>
       <CardFooter>
-        <Button variant="link">Read more</Button>
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="link">Read more</Button>
+          </SheetTrigger>
+          <SheetContent side="bottom" className="flex flex-col p-0 pb-12">
+            <SheetHeader className="relative">
+              <Image
+                src={post.imageUri}
+                alt={post.textData.title}
+                height={400}
+                width={600}
+                className="object-cover w-full h-[40dvh] overflow-hidden"
+                priority={priority}
+              />
+              <div className="absolute bottom-0 w-full px-6 py-2 backdrop-blur backdrop-brightness-50 backdrop-contrast-125">
+                <SheetTitle className="backdrop-blur-xl">{post.textData.title}</SheetTitle>
+                <SheetDescription>{post.textData.subTitle}</SheetDescription>
+              </div>
+            </SheetHeader>
+            <div className="overflow-y-auto max-h-[45dvh]">
+              <p className="px-6 break-words">{post.textData.body}</p>
+            </div>
+          </SheetContent>
+        </Sheet>
       </CardFooter>
     </Card>
   )
