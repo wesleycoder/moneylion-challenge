@@ -69,10 +69,10 @@ const config = {
         },
         'header-shrink': {
           from: {
-            height: '4.55rem',
+            height: '4rem',
           },
           to: {
-            height: '2.5rem',
+            height: '2rem',
           },
         },
         'zoom-in': {
