@@ -20,9 +20,6 @@ const resultSchema = z.object({
       seo: z.object({
         score: z.number(),
       }),
-      pwa: z.object({
-        score: z.number(),
-      }),
     }),
   }),
 })
@@ -49,11 +46,22 @@ export const GET = async (req: Request, { params }: { params: Params }) => {
   const url = new URL(PAGESPEED_URL)
   url.searchParams.set('url', env.APP_URL)
   url.searchParams.set('strategy', strategy.toUpperCase())
+  url.searchParams.append('category', 'PERFORMANCE')
+  url.searchParams.append('category', 'ACCESSIBILITY')
+  url.searchParams.append('category', 'BEST_PRACTICES')
+  url.searchParams.append('category', 'SEO')
 
   const response = await fetch(url, { next: { revalidate: env.BADGE_CACHE_TTL_MINUTES * 60 } })
-  const data = await response.json()
-  const result = resultSchema.parse(data)
-  const score = Math.round(result.lighthouseResult.categories[type].score * 100)
+  const res = await response.json()
+  const { success, data, error } = resultSchema.safeParse(res)
+
+  if (!success) {
+    return new Response(
+      JSON.stringify({ message: 'Invalid response from Google Pagespeed API', error }, null, 2),
+      { status: 500 },
+    )
+  }
+  const score = Math.round(data.lighthouseResult.categories[type].score * 100)
   return new Response(
     JSON.stringify({
       subject: score,
