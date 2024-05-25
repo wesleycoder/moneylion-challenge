@@ -10,6 +10,13 @@ import {
   CardTitle,
 } from '~/components/ui/card'
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTrigger,
+} from '~/components/ui/dialog'
+import {
   Sheet,
   SheetContent,
   SheetDescription,
@@ -37,17 +44,28 @@ export const PostCard = ({ post, priority, className, ...props }: PostCardProps)
       {...props}
     >
       <CardHeader className="relative h-96">
-        <Image
-          src={post.imageUri}
-          alt={post.textData.title}
-          fill
-          className={cn([
-            'object-cover w-full h-full sm:rounded-t-md',
-            'animate-blur-in no-scroll-timeline:animate-none',
-            '[animation-range:0%_100%] [animation-timeline:view()]',
-          ])}
-          priority={priority}
-        />
+        <Dialog>
+          <DialogTrigger asChild>
+            <Image
+              src={post.imageUri}
+              alt={post.textData.title}
+              fill
+              className={cn([
+                'object-cover w-full h-full sm:rounded-t-md',
+                'animate-blur-in no-scroll-timeline:animate-none',
+                '[animation-range:0%_100%] [animation-timeline:view()]',
+              ])}
+              priority={priority}
+            />
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogDescription>
+                <Image src={post.imageUri} alt={post.textData.title} height={600} width={1400} />
+              </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
       </CardHeader>
       <CardHeader>
         <CardTitle>{post.textData.title}</CardTitle>
@@ -63,14 +81,29 @@ export const PostCard = ({ post, priority, className, ...props }: PostCardProps)
           </SheetTrigger>
           <SheetContent side="bottom" className="flex flex-col p-0 pb-12">
             <SheetHeader className="relative">
-              <Image
-                src={post.imageUri}
-                alt={post.textData.title}
-                height={600}
-                width={1400}
-                className="object-cover w-full h-[40dvh] overflow-hidden"
-                priority={priority}
-              />
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Image
+                    src={post.imageUri}
+                    alt={post.textData.title}
+                    height={600}
+                    width={1400}
+                    className="object-cover w-full h-[40dvh] overflow-hidden"
+                  />
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogDescription>
+                      <Image
+                        src={post.imageUri}
+                        alt={post.textData.title}
+                        height={600}
+                        width={1400}
+                      />
+                    </DialogDescription>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
               <div className="absolute bottom-0 w-full px-6 py-2 backdrop-blur backdrop-brightness-50 backdrop-contrast-125">
                 <SheetTitle className="backdrop-blur-xl">{post.textData.title}</SheetTitle>
                 <SheetDescription>{post.textData.subTitle}</SheetDescription>
