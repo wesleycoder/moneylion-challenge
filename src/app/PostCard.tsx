@@ -44,7 +44,7 @@ export const PostCard = ({ post, priority, className, ...props }: PostCardProps)
       {...props}
     >
       <CardHeader className="relative p-0 h-96">
-        <Dialog>
+        <Dialog aria-label={post.textData.title}>
           <DialogTrigger asChild>
             <button type="button" className="relative w-full h-full">
               <Image
@@ -85,7 +85,7 @@ export const PostCard = ({ post, priority, className, ...props }: PostCardProps)
           </SheetTrigger>
           <SheetContent side="bottom" className="flex flex-col p-0 pb-12">
             <SheetHeader className="relative">
-              <Dialog>
+              <Dialog aria-label={post.textData.title}>
                 <DialogTrigger asChild>
                   <Image
                     src={post.imageUri}
