@@ -43,20 +43,22 @@ export const PostCard = ({ post, priority, className, ...props }: PostCardProps)
       ])}
       {...props}
     >
-      <CardHeader className="relative h-96">
+      <CardHeader className="relative p-0 h-96">
         <Dialog>
           <DialogTrigger asChild>
-            <Image
-              src={post.imageUri}
-              alt={post.textData.title}
-              fill
-              className={cn([
-                'object-cover w-full h-full sm:rounded-t-md',
-                'animate-blur-in no-scroll-timeline:animate-none',
-                '[animation-range:0%_100%] [animation-timeline:view()]',
-              ])}
-              priority={priority}
-            />
+            <button type="button" className="relative w-full h-full">
+              <Image
+                src={post.imageUri}
+                alt={post.textData.title}
+                fill
+                className={cn([
+                  'object-cover w-full h-full sm:rounded-t-md',
+                  'animate-blur-in no-scroll-timeline:animate-none',
+                  '[animation-range:0%_100%] [animation-timeline:view()]',
+                ])}
+                priority={priority}
+              />
+            </button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
@@ -104,8 +106,14 @@ export const PostCard = ({ post, priority, className, ...props }: PostCardProps)
                   </DialogHeader>
                 </DialogContent>
               </Dialog>
-              <div className="absolute bottom-0 w-full px-6 py-2 backdrop-blur backdrop-brightness-50 backdrop-contrast-125">
-                <SheetTitle className="backdrop-blur-xl">{post.textData.title}</SheetTitle>
+              <div
+                className={cn(
+                  'absolute bottom-0 w-full px-6 py-2 bg-white/50 dark:bg-black/50',
+                  'backdrop-blur-lg backdrop-brightness-100',
+                  'backdrop-contrast-100 backdrop-saturate-100',
+                )}
+              >
+                <SheetTitle>{post.textData.title}</SheetTitle>
                 <SheetDescription>{post.textData.subTitle}</SheetDescription>
               </div>
             </SheetHeader>
