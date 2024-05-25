@@ -28,6 +28,7 @@
     "paths": {
       "~/*": ["./src/*"],
     },
+    "types": ["@total-typescript/ts-reset"],
   },
   "include": [
     ".eslintrc.cjs",

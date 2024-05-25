@@ -1,4 +1,3 @@
-import '@total-typescript/ts-reset'
 import { z } from 'zod'
 import { env } from '~/env'
 import { ContentCardSchema } from '~/models/contentCard'
