@@ -21,7 +21,7 @@ const config = {
      * In a real production scenario we should remove this option and let Next.js optimize
      * the images or use a custom loader or third-party service
      */
-    unoptimized: true,
+    unoptimized: env.NODE_ENV === 'development',
   },
 }
 
