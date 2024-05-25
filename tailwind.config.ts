@@ -76,10 +76,10 @@ const config = {
           },
         },
         'zoom-in': {
-          '0%': { transform: 'scale(.95)' },
-          '33%': { transform: 'scale(1)' },
-          '66%': { transform: 'scale(1)' },
-          '100%': { transform: 'scale(.95)' },
+          '0%': { transform: 'scale(.8)', opacity: '0' },
+          '50%': { transform: 'scale(1)', opacity: '1' },
+          '85%': { transform: 'scale(1)', opacity: '1' },
+          '100%': { transform: 'scale(.9)', opacity: '0' },
         },
       },
       animation: {
