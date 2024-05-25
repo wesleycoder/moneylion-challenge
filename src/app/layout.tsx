@@ -17,7 +17,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
 
   return (
     <CookiesProvider>
-      <html lang="en" className={`${GeistSans.variable}`}>
+      <html lang="en" className={`${GeistSans.variable}`} suppressHydrationWarning>
         <head>
           <link rel="preconnect" href="https://api.iconify.design" />
         </head>
