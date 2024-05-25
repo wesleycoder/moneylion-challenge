@@ -27,13 +27,25 @@ type PostCardProps = HTMLProps<HTMLDivElement> & {
 
 export const PostCard = ({ post, priority, className, ...props }: PostCardProps) => {
   return (
-    <Card className={cn('rounded-none sm:rounded-md', className)} {...props}>
+    <Card
+      className={cn([
+        'animate-zoom-in no-scroll-timeline:animate-none',
+        '[animation-range:0%_100%] [animation-timeline:view()]',
+        'rounded-none sm:rounded-md',
+        className,
+      ])}
+      {...props}
+    >
       <CardHeader className="relative h-96">
         <Image
           src={post.imageUri}
           alt={post.textData.title}
           fill
-          className="object-cover w-full h-full sm:rounded-t-md"
+          className={cn([
+            'object-cover w-full h-full sm:rounded-t-md',
+            'animate-blur-in no-scroll-timeline:animate-none',
+            '[animation-range:0%_100%] [animation-timeline:view()]',
+          ])}
           priority={priority}
         />
       </CardHeader>
