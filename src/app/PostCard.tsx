@@ -54,8 +54,8 @@ export const PostCard = ({ post, priority, className, ...props }: PostCardProps)
               <Image
                 src={post.imageUri}
                 alt={post.textData.title}
-                height={400}
-                width={600}
+                height={600}
+                width={1400}
                 className="object-cover w-full h-[40dvh] overflow-hidden"
                 priority={priority}
               />
