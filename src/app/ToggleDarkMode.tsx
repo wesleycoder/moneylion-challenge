@@ -3,6 +3,7 @@ import { Icon, type IconifyIconProperties } from '@iconify-icon/react'
 import type { DropdownMenuProps } from '@radix-ui/react-dropdown-menu'
 import { useCookies } from 'next-client-cookies'
 import { useEffect } from 'react'
+import { Button } from '~/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -61,8 +62,11 @@ export const ToggleDarkMode = ({ className, setTheme }: ToggleDarkModeProps) => 
           aria-label="Select dark mode"
           className={cn('py-2 px-4', className)}
           role="combobox"
+          asChild
         >
-          <ModeIcon theme={cookies.get('theme')} />
+          <Button variant="ghost" size="icon">
+            <ModeIcon theme={cookies.get('theme')} />
+          </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuRadioGroup

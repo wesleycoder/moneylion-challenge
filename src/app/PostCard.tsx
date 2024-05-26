@@ -1,5 +1,16 @@
+import { formatDistance } from 'date-fns'
 import Image from 'next/image'
 import type { HTMLProps } from 'react'
+import { Likes } from '~/components/Likes'
+import { ReadMore } from '~/components/ReadMore'
+import {
+  Timeline,
+  TimelineContent,
+  TimelineDot,
+  TimelineHeading,
+  TimelineItem,
+  TimelineLine,
+} from '~/components/Timeline'
 import { Button } from '~/components/ui/button'
 import {
   Card,
@@ -9,21 +20,8 @@ import {
   CardHeader,
   CardTitle,
 } from '~/components/ui/card'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTrigger,
-} from '~/components/ui/dialog'
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '~/components/ui/sheet'
+import { Dialog, DialogContent, DialogTrigger } from '~/components/ui/dialog'
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from '~/components/ui/sheet'
 import { cn } from '~/lib/utils'
 import type { ContentCard } from '~/models/contentCard'
 
@@ -71,60 +69,52 @@ export const PostCard = ({ post, priority, className, ...props }: PostCardProps)
           </DialogContent>
         </Dialog>
       </CardHeader>
-      <CardHeader>
-        <CardTitle>{post.textData.title}</CardTitle>
-        <CardDescription>{post.textData.subTitle}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <p className="break-words line-clamp-3 overflow-ellipsis">{post.textData.body}</p>
-      </CardContent>
-      <CardFooter>
+      <Dialog>
+        <CardHeader>
+          <CardTitle>{post.textData.title}</CardTitle>
+          <CardDescription>
+            <div className="text-foreground">{post.textData.subTitle}</div>
+            <div>
+              {post.textData.author.first} {post.textData.author.last} -{' '}
+              <span className="text-sm text-muted-foreground">
+                {formatDistance(post.metadata.publishDate, new Date(), { addSuffix: true })}
+              </span>
+            </div>
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ReadMore>{post.textData.body}</ReadMore>
+        </CardContent>
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="link">Read more</Button>
+            <CardFooter>
+              <Button variant="ghost" size="sm">
+                {post.comments.length} {post.comments.length === 1 ? 'Comment' : 'Comments'}
+              </Button>
+            </CardFooter>
           </SheetTrigger>
-          <SheetContent side="bottom" className="flex flex-col p-0 pb-12">
-            <SheetHeader className="relative">
-              <Dialog aria-label={post.textData.title}>
-                <DialogTrigger asChild>
-                  <Image
-                    src={post.imageUri}
-                    alt={post.textData.title}
-                    height={600}
-                    width={1400}
-                    className="object-cover w-full h-[40dvh] overflow-hidden"
-                  />
-                </DialogTrigger>
-                <DialogContent>
-                  <DialogHeader>
-                    <DialogDescription>
-                      <Image
-                        src={post.imageUri}
-                        alt={post.textData.title}
-                        height={600}
-                        width={1400}
-                      />
-                    </DialogDescription>
-                  </DialogHeader>
-                </DialogContent>
-              </Dialog>
-              <div
-                className={cn(
-                  'absolute bottom-0 w-full px-6 py-2 bg-white/50 dark:bg-black/50',
-                  'backdrop-blur-lg backdrop-brightness-100',
-                  'backdrop-contrast-100 backdrop-saturate-100',
-                )}
-              >
-                <SheetTitle>{post.textData.title}</SheetTitle>
-                <SheetDescription>{post.textData.subTitle}</SheetDescription>
-              </div>
+          <SheetContent className="flex flex-col p-0 pb-12">
+            <SheetHeader>
+              <h3 className="p-4">Comments for: {post.textData.title}</h3>
             </SheetHeader>
-            <div className="overflow-y-auto max-h-[45dvh]">
-              <p className="px-6 break-words">{post.textData.body}</p>
-            </div>
+            <Timeline>
+              {post.comments.map((comment, i) => (
+                <TimelineItem key={comment.text}>
+                  <TimelineHeading>{comment.author}</TimelineHeading>
+                  <TimelineDot className="size-8">
+                    <Image src={comment.profilePic} alt={comment.author} fill />
+                  </TimelineDot>
+                  {i + 1 < post.comments.length && <TimelineLine />}
+                  <TimelineContent>
+                    {comment.text}
+                    <Likes likes={comment.likes} />
+                  </TimelineContent>
+                </TimelineItem>
+              ))}
+            </Timeline>
           </SheetContent>
         </Sheet>
-      </CardFooter>
+      </Dialog>
     </Card>
   )
 }
