@@ -47,7 +47,7 @@ export default async function HomePage() {
           Enjoy your feed
         </h2>
         {feed.map((post, i) => (
-          <PostCard key={post.id} post={post} priority={i <= 4} />
+          <PostCard key={post.id} post={post} priority={i < 3} />
         ))}
       </main>
     </>
