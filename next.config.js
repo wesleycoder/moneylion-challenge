@@ -14,7 +14,14 @@ const config = {
     },
   },
   images: {
-    domains: ['picsum.photos'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+        port: '',
+        pathname: '/**',
+      },
+    ],
     /**
      * Opting out of optimization to avoid images from picsum changing when resizing the window
      * caused by the optimization using a srcset with different urls.
