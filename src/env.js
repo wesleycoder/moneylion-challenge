@@ -3,9 +3,9 @@ import { z } from 'zod'
 
 const CURRENT_DOMAIN =
   process.env.APP_DOMAIN ||
+  process.env.VERCEL_PROJECT_PRODUCTION_URL ||
   process.env.VERCEL_URL ||
-  process.env.VERCEL_BRANCH_URL ||
-  process.env.VERCEL_PROJECT_PRODUCTION_URL
+  process.env.VERCEL_BRANCH_URL
 
 export const env = createEnv({
   /**
