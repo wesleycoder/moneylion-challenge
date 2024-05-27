@@ -14,7 +14,6 @@ export const env = createEnv({
    */
   server: {
     NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
-    DATABASE_URL: z.string().url().optional(),
     FEED_URL: z.string().url(),
     FEED_IS_DYNAMIC: z.preprocess((val) => val === 'true', z.boolean()).default(false),
     GOOGLE_API_KEY: z.string(),
@@ -39,7 +38,6 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
-    DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
     FEED_URL: process.env.FEED_URL,
     FEED_IS_DYNAMIC: process.env.FEED_IS_DYNAMIC,
