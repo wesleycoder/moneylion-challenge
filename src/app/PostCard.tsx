@@ -94,7 +94,7 @@ export const PostCard = ({ post, priority, className, ...props }: PostCardProps)
         <Sheet>
           <SheetTrigger asChild>
             <CardFooter>
-              <Button variant="ghost" size="sm">
+              <Button type="button" variant="ghost" size="sm">
                 {post.comments.length} {post.comments.length === 1 ? 'Comment' : 'Comments'}
               </Button>
             </CardFooter>

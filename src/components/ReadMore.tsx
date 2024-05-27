@@ -17,7 +17,7 @@ export const ReadMore = ({ children, className, ...props }: ReadMoreProps) => {
       >
         {children}
       </div>
-      <Button variant="link" onClick={toggleShort}>
+      <Button type="button" variant="link" onClick={toggleShort}>
         {isShort ? 'Read more' : 'Collapse'}
       </Button>
     </>

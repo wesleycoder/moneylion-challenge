@@ -64,7 +64,7 @@ export const ToggleDarkMode = ({ className, setTheme }: ToggleDarkModeProps) => 
           role="combobox"
           asChild
         >
-          <Button variant="ghost" size="icon">
+          <Button type="button" variant="ghost" size="icon">
             <ModeIcon theme={cookies.get('theme')} />
           </Button>
         </DropdownMenuTrigger>

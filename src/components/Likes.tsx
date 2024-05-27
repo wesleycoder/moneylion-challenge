@@ -9,6 +9,7 @@ export const Likes = ({ likes: initialLikes }: { likes: number }) => {
   return (
     <Button
       className="flex gap-2 text-sm rounded-none text-secondary"
+      type="button"
       variant="ghost"
       size="sm"
       onClick={() => {
