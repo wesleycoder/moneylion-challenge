@@ -5,7 +5,8 @@ const CURRENT_DOMAIN =
   process.env.APP_DOMAIN ||
   process.env.VERCEL_PROJECT_PRODUCTION_URL ||
   process.env.VERCEL_URL ||
-  process.env.VERCEL_BRANCH_URL
+  process.env.VERCEL_BRANCH_URL ||
+  'localhost:3000'
 
 export const env = createEnv({
   /**
@@ -16,11 +17,12 @@ export const env = createEnv({
     NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
     FEED_URL: z.string().url(),
     FEED_IS_DYNAMIC: z.preprocess((val) => val === 'true', z.boolean()).default(false),
-    GOOGLE_API_KEY: z.string(),
+    GOOGLE_API_KEY: z.string().optional(),
     APP_URL: z.string().url(),
-    APP_URLS: z
-      .preprocess((s) => (typeof s === 'string' ? s.split(',') : []), z.array(z.string()))
-      .default([]),
+    APP_URLS: z.preprocess(
+      (s) => (typeof s === 'string' ? s.split(',').filter(Boolean) : []),
+      z.array(z.string().url()).default([]),
+    ),
     BADGE_CACHE_TTL_MINUTES: z.coerce.number().default(15),
   },
 
@@ -43,12 +45,7 @@ export const env = createEnv({
     FEED_IS_DYNAMIC: process.env.FEED_IS_DYNAMIC,
     GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
     APP_URL: `https://${CURRENT_DOMAIN}`,
-    APP_URLS: [
-      process.env.APP_URLS,
-      process.env.VERCEL_URL,
-      process.env.VERCEL_BRANCH_URL,
-      process.env.VERCEL_PROJECT_PRODUCTION_URL,
-    ].join(','),
+    APP_URLS: [process.env.APP_URLS, `https://${CURRENT_DOMAIN}`].join(','),
     BADGE_CACHE_TTL_MINUTES: process.env.BADGE_CACHE_TTL_MINUTES,
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,

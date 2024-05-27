@@ -10,7 +10,7 @@ await import('./src/env.js')
 const config = {
   experimental: {
     serverActions: {
-      allowedOrigins: ['http://localhost:3000', ...env.APP_URLS],
+      allowedOrigins: [...env.APP_URLS],
     },
   },
   images: {

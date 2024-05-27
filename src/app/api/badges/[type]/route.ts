@@ -44,7 +44,9 @@ export const GET = async (req: Request, { params }: { params: Params }) => {
   } = parsedParams
 
   const url = new URL(PAGESPEED_URL)
-  url.searchParams.set('key=', env.GOOGLE_API_KEY)
+  if (env.GOOGLE_API_KEY) {
+    url.searchParams.set('key=', env.GOOGLE_API_KEY)
+  }
   url.searchParams.set('url', env.APP_URL)
   url.searchParams.set('strategy', strategy.toUpperCase())
   url.searchParams.append('category', 'PERFORMANCE')
