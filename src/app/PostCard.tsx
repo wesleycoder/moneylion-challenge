@@ -48,8 +48,12 @@ export const PostCard = ({ post, priority, className, ...props }: PostCardProps)
               <Image
                 src={`${post.imageUri}?id=${post.id}`}
                 alt={post.textData.title}
-                sizes="100vw"
+                sizes="(min-width: 768px) 70vw, 90vw"
                 fill
+                width={800}
+                height={400}
+                quality={75}
+                placeholder="blur"
                 className={cn([
                   'object-cover w-full h-auto sm:rounded-t-md',
                   'animate-blur-in no-scroll-timeline:animate-none',
@@ -65,6 +69,8 @@ export const PostCard = ({ post, priority, className, ...props }: PostCardProps)
               alt={post.textData.title}
               height={600}
               width={1400}
+              quality={100}
+              placeholder="blur"
               className="max-h-[90dvh] max-w-[95dvw] w-[100%]"
             />
           </DialogContent>

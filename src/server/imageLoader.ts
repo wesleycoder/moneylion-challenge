@@ -9,7 +9,7 @@ const loader: ImageLoader = ({ src, width = 1024, quality = 100 }) => {
   if (picsumRegex.test(src)) {
     const resized = src.replace(
       picsumRegex,
-      (_, base, w, h, id) => `${base}/seed/${id}/${getPathForSize(w, h, width)}`,
+      (_, base, w, h, id) => `${base}/seed/${id}/${getPathForSize(w, h, width)}.webp`,
     )
     return resized
   }
