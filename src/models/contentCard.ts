@@ -3,6 +3,7 @@ import { z } from 'zod'
 export const ContentCardSchema = z.object({
   id: z.string().uuid(),
   imageUri: z.string().url().default('https://picsum.photos/500/500'),
+  imageUriBlur: z.string().url().default('data:image/jpeg;base64,'),
   textData: z.object({
     title: z.string(),
     subTitle: z.string(),
@@ -21,6 +22,7 @@ export const ContentCardSchema = z.object({
       text: z.string(),
       author: z.string(),
       profilePic: z.string().url().default('https://picsum.photos/200'),
+      profilePicBlur: z.string().url().default('data:image/jpeg;base64,'),
       likes: z.number().int().default(0),
     }),
   ),

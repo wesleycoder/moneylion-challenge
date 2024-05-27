@@ -46,14 +46,12 @@ export const PostCard = ({ post, priority, className, ...props }: PostCardProps)
           <DialogTrigger asChild>
             <button type="button" className="relative w-full h-full" aria-label="Open image view">
               <Image
-                src={`${post.imageUri}?id=${post.id}`}
+                src={post.imageUri}
                 alt={post.textData.title}
-                sizes="(min-width: 768px) 70vw, 90vw"
                 fill
-                width={800}
-                height={400}
-                quality={75}
+                sizes="(min-width: 768px) 100vw, 95vw"
                 placeholder="blur"
+                blurDataURL={post.imageUriBlur}
                 className={cn([
                   'object-cover w-full h-auto sm:rounded-t-md',
                   'animate-blur-in no-scroll-timeline:animate-none',
@@ -65,12 +63,13 @@ export const PostCard = ({ post, priority, className, ...props }: PostCardProps)
           </DialogTrigger>
           <DialogContent className="max-w-[95dvw] w-max">
             <Image
-              src={`${post.imageUri}?id=${post.id}`}
+              src={post.imageUri}
               alt={post.textData.title}
               height={600}
               width={1400}
-              quality={100}
+              sizes="(min-width: 768px) 90vw, 95vw"
               placeholder="blur"
+              blurDataURL={post.imageUriBlur}
               className="max-h-[90dvh] max-w-[95dvw] w-[100%]"
             />
           </DialogContent>
@@ -113,7 +112,9 @@ export const PostCard = ({ post, priority, className, ...props }: PostCardProps)
                       src={`${comment.profilePic}?id=${comment.author}`}
                       alt={comment.author}
                       fill
-                      sizes="100%"
+                      sizes="(min-width: 768px) 128px, 48px"
+                      placeholder="blur"
+                      blurDataURL={comment.profilePicBlur}
                     />
                   </TimelineDot>
                   {i + 1 < post.comments.length && <TimelineLine />}
