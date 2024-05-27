@@ -1,0 +1,40 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "5 - Badges",
+  "steps": [
+    {
+      "file": "README.md",
+      "description": "One more little feature I was glad to implement is this performance badge section.\n\nIt's more than just static markdown saying some random cr*p, and it displays up to date data on the performance of this application.",
+      "line": 3
+    },
+    {
+      "file": "src/app/api/badges/[type]/route.ts",
+      "description": "It integrates directly with Google PageSpeed API to gather [Web Vitals](https://web.dev/explore/learn-core-web-vitals) metrics on performance, accessibility, best practices and seo.\n",
+      "line": 6
+    },
+    {
+      "file": "src/app/api/badges/[type]/route.ts",
+      "description": "We can provide an API_KEY to ensure that we will not be throttled, but the PageSpeed API can be called without it also.",
+      "line": 48
+    },
+    {
+      "file": "src/app/api/badges/[type]/route.ts",
+      "description": "After receiving the API response and parsing it we can respond with a JSON on this endpoint with a specific structured format.",
+      "line": 67
+    },
+    {
+      "file": "README.md",
+      "selection": {
+        "start": {
+          "line": 3,
+          "character": 29
+        },
+        "end": {
+          "line": 3,
+          "character": 504
+        }
+      },
+      "description": "That format is specific for the [`badgen.net` API](https://badgen.net) which provides us with a badge image rendered with the data we provided.\n\nThere's a good deal of care put into this since performance is something sensitive for users and I care a lot about it on my projects.\n\n> PS: I know about the svg data duplicity between here and the api, and will deal with it later, since this isn't a critical feature, but just an exploration."
+    }
+  ]
+}

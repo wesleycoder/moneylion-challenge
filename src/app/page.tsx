@@ -18,6 +18,7 @@ const setTheme = async (theme?: string) => {
 
 export default async function HomePage() {
   const feed = await getFeed()
+
   return (
     <>
       <header

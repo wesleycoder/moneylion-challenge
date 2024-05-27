@@ -18,7 +18,7 @@ export const getFeed = async () => {
   const cards = z
     .object({ contentCards: z.array(ContentCardSchema) })
     .parse(data)
-    .contentCards.splice(0, 2)
+    .contentCards.sort((a, b) => b.metadata.priority - a.metadata.priority)
 
   const processedCards = await Promise.all(
     cards.map(async (card) => {
@@ -54,5 +54,5 @@ export const getFeed = async () => {
     }),
   )
 
-  return processedCards.sort((a, b) => b.metadata.priority - a.metadata.priority)
+  return processedCards
 }

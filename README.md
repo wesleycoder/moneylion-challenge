@@ -8,6 +8,10 @@
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with
 `create-t3-app`.
 
+## Hosted on
+
+- [moneylion.guima.dev](https://moneylion.guima.dev)
+
 ## The stack
 
 - [Next.js](https://nextjs.org) as the base framework
@@ -19,12 +23,17 @@ This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with
 
 ## Learn more
 
-Follow the
+This project was carefully documented using the
 [Code Tour](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour)
-available on this repository via VSCode to learn more about the decisions made
-in the project.
+extension for VSCode, I highly recomend using it to learn more about the
+decisions made in the project.
 
-## How do I run this
+For more information about this handy extension, check their
+[documentation](https://marketplace.visualstudio.com/items?itemName=vsls-contrib.codetour#getting-started)
+on how to setup and use it.
+![Code Tour](https://user-images.githubusercontent.com/116461/76151694-7b531b80-606c-11ea-96a6-0655eb6ab4e6.gif)
+
+## How do I run this project?
 
 First add the required environment variables to the `.env` file in the `root` of
 the project:

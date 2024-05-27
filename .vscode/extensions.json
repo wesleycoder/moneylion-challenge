@@ -7,5 +7,6 @@
     "socheatsok78-lab.dotenv-vscode-stripped",
     "yoavbls.pretty-ts-errors",
     "mrmlnc.vscode-stylefmt",
+    "vsls-contrib.codetour",
   ],
 }

@@ -42,7 +42,7 @@ export const env = createEnv({
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
     FEED_URL: process.env.FEED_URL,
-    FEED_IS_DYNAMIC: process.env.FEED_IS_DYNAMIC,
+    FEED_IS_DYNAMIC: process.env.FEED_IS_DYNAMIC ?? process.env.NODE_ENV === 'production',
     GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
     APP_URL: `https://${CURRENT_DOMAIN}`,
     APP_URLS: [process.env.APP_URLS, `https://${CURRENT_DOMAIN}`].join(','),

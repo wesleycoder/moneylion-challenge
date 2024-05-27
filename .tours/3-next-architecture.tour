@@ -1,0 +1,105 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "3 - Feed (main feature)",
+  "steps": [
+    {
+      "file": "src/app/page.tsx",
+      "description": "As this app uses `Next.js` it was opted into not using any more layers of abstractions for the setup of API calls, building up on the [app router](https://nextjs.org/docs/getting-started/project-structure#app-routing-conventions) architecture for it's API routes.\n\nThis gives simplicity for the architecture allowing a clear reasoning of the data flow.",
+      "line": 20
+    },
+    {
+      "file": "src/app/api/feed/index.ts",
+      "description": "Here's the main functionality of the application:\nGathering the data from the main endpoint.",
+      "line": 15
+    },
+    {
+      "file": "src/app/api/feed/index.ts",
+      "selection": {
+        "start": {
+          "line": 19,
+          "character": 29
+        },
+        "end": {
+          "line": 19,
+          "character": 55
+        }
+      },
+      "description": "Leveraging the `zod` library for validation it's ensured that the data we consume adheres to the proposed contract structure on the briefing."
+    },
+    {
+      "file": "src/app/api/feed/index.ts",
+      "description": "Here we process the data to enhance the experience, we'll come back to this soon, so feel free to skip ahead to the next step.",
+      "line": 20
+    },
+    {
+      "file": "src/app/api/feed/index.ts",
+      "description": "The data is being sorted by `priority` as requested on the briefing",
+      "line": 21
+    },
+    {
+      "file": "src/app/page.tsx",
+      "description": "Getting back to the page, here we consume the data in a simple list that is rendered server-side for the user.",
+      "line": 49
+    },
+    {
+      "file": "src/app/PostCard.tsx",
+      "description": "The `PostCard` component contains all the user interactions with the `Post`.",
+      "line": 33
+    },
+    {
+      "file": "src/app/PostCard.tsx",
+      "description": "It features a `Preview` of the image in it's full resolution via the `Dialog` component.",
+      "line": 45
+    },
+    {
+      "file": "src/app/PostCard.tsx",
+      "description": "The image is lazy-loaded with a `blur` fallback.",
+      "line": 53
+    },
+    {
+      "file": "src/app/PostCard.tsx",
+      "description": "We leverage the `next/image` package for a good approach between performance and UX.",
+      "line": 51
+    },
+    {
+      "file": "src/app/PostCard.tsx",
+      "description": "Here we use the `date-fns` lib to format the `publishDate` info in a readable format.",
+      "line": 86
+    },
+    {
+      "file": "src/app/PostCard.tsx",
+      "description": "The `ReadMore` component abstracts the visualization of a larger text and expanding it's contents.",
+      "line": 92
+    },
+    {
+      "file": "src/components/ReadMore.tsx",
+      "description": "It uses a simple but effective logic that runs on the client only.",
+      "line": 9
+    },
+    {
+      "file": "src/components/ReadMore.tsx",
+      "description": "It leaves most of the work to the css properties through `tailwindcss` for a fast UX without relying too much on javascript for this simple interaction.",
+      "line": 16
+    },
+    {
+      "file": "src/app/PostCard.tsx",
+      "description": "The comments section is presented in a \"Drawer like\" format with the `Sheet` component which gives a good UX.\n\nThere can be a little bit to improve on this component maybe swapping it on a mobile view, or better yet adding other routes for a detailed view.\nI was attempted but halted for adding too much complexity on the timebox for the project.\nThe main challenge was not owning the API and for being essentially only random generated data (no persistent ids) the experience of navigation was plainly bad.\n\nOn a real application this wouldn't be an issue as there would be more consistency on the data.",
+      "line": 102
+    },
+    {
+      "file": "src/app/api/feed/index.ts",
+      "description": "While on the topic of data consistency:\n\nThat's the main reason for processing the data here.\nThis way we can ensure that the UI will shuffle less between refreshes.\n\nThis was a fun part of the challenge having to balance performance and UX.",
+      "line": 23
+    },
+    {
+      "file": "src/app/api/feed/route.ts",
+      "description": "The same function that is called internally by the page is also exposed here as an API endpoint just as an example of how to serialize it for external usage.\nBut this is not needed for this application to work, as the function is needed only on the server side rendering step of the application.",
+      "line": 4
+    },
+    {
+      "title": "Next",
+      "description": "I hope this helped you understand the main feature.\n\nWhen you are ready you can check out the additional features on the tour list.\nThanks for staying with me on this!",
+      "icon": "arrow-right"
+    }
+  ]
+}

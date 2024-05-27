@@ -1,0 +1,52 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "1 - Intro",
+  "isPrimary": true,
+  "steps": [
+    {
+      "title": "Welcome.md",
+      "description": "Welcome!\n\nThis project was part of the job recruitment process for [MoneyLion](https://www.moneylion.com/) and made by [@wesleycoder](https://guima.dev).\n\nThis tour will give a brief overview of the project and guide you through the decisions made within the scope of the challenge.\n\nThe briefing for this challenge is [available here](https://engine.stoplight.io/docs/fullstack-spec/o7z8nk58uy0w4-coding-challenge-creating-a-content-feed-from-private-api-to-ui).",
+      "icon": "mail"
+    },
+    {
+      "file": "README.md",
+      "title": "Tech Stack",
+      "description": "These are the few tech that were chosen for this challenge.\n\nThe intention was to keep dependencies to a minimum while having a good balance between DX and UX.",
+      "line": 11,
+      "icon": "versions"
+    },
+    {
+      "file": "README.md",
+      "title": "Next.js",
+      "description": "Next.js is the basis for the project.\nIt's the framework that I have most expertise on and is a requirement for the job application, so choosing another framework would undermine my skills and differ from the process.",
+      "line": 13,
+      "icon": "browser"
+    },
+    {
+      "file": "README.md",
+      "title": "Tailwind",
+      "description": "Tailwind is a great tool that helps us create interfaces fast and with great flexibility and DX.\nThe ecossystem is already great and grows everyday.\nIt's a no brainer solution for starting new projects nowadays.\nWith it were implemented components from [shadcn-ui](https://ui.shadcn.com/) that are ready for use code samples giving a lot out of the box and full flexibility for changes.",
+      "line": 14,
+      "icon": "bracket"
+    },
+    {
+      "file": "README.md",
+      "title": "Biome.js",
+      "description": "Typescript is a must when we care about code quality and Biome.js was chosen for simplicity of configuration over Prettier/Eslint that nowadays have an overhead of setup.",
+      "line": 15,
+      "icon": "bug"
+    },
+    {
+      "file": "README.md",
+      "title": "Bun.js",
+      "description": "Bun was chosen for it's speed, even being somewhat in development and not yet publicly production ready I've found that for most use cases it can cover the basis and offer a great DX and a bit more than just speed.\n\nAlso is a great solution for prototyping endpoints relying on interop and web standards.",
+      "line": 18,
+      "icon": "terminal"
+    },
+    {
+      "title": "Next up",
+      "description": "Now that the tech was presented give a try to the next tour `Setup` for running the project.",
+      "icon": "arrow-right"
+    }
+  ]
+}

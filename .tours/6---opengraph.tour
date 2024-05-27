@@ -1,0 +1,21 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "6 - OpenGraph",
+  "steps": [
+    {
+      "file": "src/app/layout.tsx",
+      "description": "Last but not least, I decided to put some time into managing the opengraph metadata.\n\nI hadn't made this using the app router structure from Next and found some issues while learning it.\n\nBut in the end I managed to get it working with the setup below.\n\nI made the logo by iterating a little bit on a prompt with Midjourney and I didn't want to rip off the logo from MoneyLion, just reference it.",
+      "line": 16
+    },
+    {
+      "file": "src/app/layout.tsx",
+      "description": "Check it working, share the url `https://moneylion.guima.dev` with yourself or a colleague and see if you like it.\n\nIt's simple but it's from the heart.",
+      "line": 6
+    },
+    {
+      "title": "Thanks",
+      "description": "Thanks for sticking with me until now.\nI know that was a lot, thank you for reviewing the code (I also know you could be being much more productive right now).\nI hope you had a good impression.\n\nFor anything you need I'm available at most places via `@wesleycoder`\nDm's open.\n\nHave a great day!",
+      "icon": "heart"
+    }
+  ]
+}

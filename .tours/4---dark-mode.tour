@@ -1,0 +1,64 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "4 - Dark Mode",
+  "steps": [
+    {
+      "file": "src/app/ToggleDarkMode.tsx",
+      "description": "This is the Dark Mode toggle button present on the application.\n\nBy far this was one of the most enjoying aspects to set-up when starting the application.\n\nIt was an idea I had not yet implemented before, but just heard about.",
+      "line": 41
+    },
+    {
+      "file": "src/app/ToggleDarkMode.tsx",
+      "description": "Most Dark Mode toggles we have on the internet are handled client-side only.\nThis always gives users a chance to see the wrong theme while the page is loading.\n\nAs I'm a dark mode enjoyer, this has always troubled me.\n\nAnd so I researched a bit.",
+      "line": 18
+    },
+    {
+      "file": "src/middleware.ts",
+      "description": "I've discovered that there's an acronym for it and it's a funny one [`F.A.R.T`](https://css-tricks.com/flash-of-inaccurate-color-theme-fart/).\nDespite the name it's a real UX issue and there's work being done to solve it.",
+      "line": 10
+    },
+    {
+      "file": "src/middleware.ts",
+      "selection": {
+        "start": {
+          "line": 12,
+          "character": 3
+        },
+        "end": {
+          "line": 15,
+          "character": 52
+        }
+      },
+      "description": "One of such efforts is adding \"preference hints\" headers to the HTTP layer before sending the response to the user.\n\nThis gives the server an option to \"ask\" the browser \"What's the user preference for colors?\" and act accordingly."
+    },
+    {
+      "file": "src/app/layout.tsx",
+      "description": "Then we can read this information when rendering our layout.",
+      "line": 56
+    },
+    {
+      "file": "src/app/layout.tsx",
+      "description": "And at server-render time we already ship the correct theme/style.",
+      "line": 65
+    },
+    {
+      "file": "src/app/page.tsx",
+      "selection": {
+        "start": {
+          "line": 10,
+          "character": 1
+        },
+        "end": {
+          "line": 18,
+          "character": 1
+        }
+      },
+      "description": "And the last step is to let the user assert it's preference by hand.\n\nUsing localstorage or something similar would be a little hassle to sync the info to the server.\n\nFor this purpose a good old `cookie` serves well, being symple to set up, and together with [`Next.js` server actions pattern](https://nextjs.org/docs/app/building-your-application/data-fetching/server-actions-and-mutations) it's easy to keep it secure.\n"
+    },
+    {
+      "file": "src/app/page.tsx",
+      "description": "We pass the action to the button and the cycle is complete.\n\nGive it a try, toggle it, change the system preference, refresh as much as you like.\nCompare with other sites that have dark mode and tell me this isn't great! ***\n\n> *** Ps: Not every [browser supports this](https://caniuse.com/mdn-http_headers_sec-ch-prefers-color-scheme) of course (its still a greenfield implementation).\n>\n> But it's gaining addoption and it's worth a try on a project like this no?! :)\n>\n> The good thing is that the cookie fallback option will still work everywhere, it's progressively enhanced by default.",
+      "line": 40
+    }
+  ]
+}

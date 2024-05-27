@@ -1,0 +1,36 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "2 - Setup",
+  "steps": [
+    {
+      "file": ".env.example",
+      "description": "First create a new `.env` file in the `root` of the project.\n\nThe only strictly needed variable for this project is the `FEED_ENDPOINT`.\n\nAlternatively is recommended to use a tool like [`dotenvx`](https://dotenvx.com/) or [`dotenv-vault`](https://vault.dotenv.org/) for securing projects secrets.\nNot strictly needed for this project but worth configuring if intended to maintain the project for a long period.",
+      "line": 13
+    },
+    {
+      "file": ".env.example",
+      "description": "There's other optional variables that customize the way the project works, mostly related to the deployed version, unlocking some features.",
+      "line": 19
+    },
+    {
+      "file": "package.json",
+      "description": "Next we can just run the project.\n\nAs mentioned `bun` was used for the project, but it should run with little problem with any other package managers.\n\nIf using `bun` just run the project with `bun dev`.\n\nWith this the project will be running by default on [localhost:3000](http://localhost:3000).",
+      "line": 8
+    },
+    {
+      "title": "Next up",
+      "description": "Now give the app a try and feel the experience without any bias from me :)\n\nAfter that you can come back and check the next tour `Feed (main feature)` to start a walkthrough on the development of this app.",
+      "selection": {
+        "start": {
+          "line": 3,
+          "character": 55
+        },
+        "end": {
+          "line": 3,
+          "character": 74
+        }
+      },
+      "icon": "arrow-right"
+    }
+  ]
+}
