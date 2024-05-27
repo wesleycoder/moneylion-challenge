@@ -14,6 +14,8 @@ const config = {
     },
   },
   images: {
+    loader: 'custom',
+    loaderFile: './src/server/imageLoader.ts',
     remotePatterns: [
       {
         protocol: 'https',
@@ -22,13 +24,6 @@ const config = {
         pathname: '/**',
       },
     ],
-    /**
-     * Opting out of optimization to avoid images from picsum changing when resizing the window
-     * caused by the optimization using a srcset with different urls.
-     * In a real production scenario we should remove this option and let Next.js optimize
-     * the images or use a custom loader or third-party service
-     */
-    unoptimized: env.NODE_ENV === 'development',
   },
 }
 
